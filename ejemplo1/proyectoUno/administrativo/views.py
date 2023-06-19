@@ -10,6 +10,7 @@ from administrativo.models import *
 
 def index(request):
     # return HttpResponse("Hola mundo desde Python")
+    print("Hola index")
     return HttpResponse("Hola mundo desde Python<br/><br/>%s" % (request.path))
 
 def listadoEstudiantes(request):
@@ -43,5 +44,6 @@ def listadoEstudiantesDos(request):
     # en el template
     informacion_template = {'estudiantes': estudiantes,
     'numero_estudiantes': len(estudiantes),
-    'mis_numeros_telefonicos': mis_numeros_telefonicos}
+    'mis_numeros_telefonicos': mis_numeros_telefonicos,
+    'numero_telefonos': len(mis_numeros_telefonicos)}
     return render(request, 'listadoEstudiantesDos.html', informacion_template)

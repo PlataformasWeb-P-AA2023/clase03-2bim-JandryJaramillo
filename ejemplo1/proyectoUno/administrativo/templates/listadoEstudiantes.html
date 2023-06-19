@@ -1,4 +1,5 @@
 <h3>{{ mititulo }}</h3>
+<hr>
 Número de estudiantes {{ numero_estudiantes }}
 <hr>
 <br/>
@@ -7,10 +8,11 @@ Número de estudiantes {{ numero_estudiantes }}
 
 {% for e in estudiantes %}
 
-  <li>{{e}}</li>
+  <li>{{e.id}} {{e.apellido}}</li>
 
 {% endfor %}
 
 </ul>
 
+<hr>
 <hr>
