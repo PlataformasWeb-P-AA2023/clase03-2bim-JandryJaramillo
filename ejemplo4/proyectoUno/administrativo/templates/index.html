@@ -15,6 +15,21 @@
 {% endfor %} 
 </ul>
 
+<ul>
+  {% for t in telefonos %}
+ 
+   <li>
+     {{t}} - [<a href="{% url 'obtener_telefonos' t.id %}">ver</a>] -
+     [<a href="{% url 'eliminar_telefono' t.id %}" 
+       onclick="return confirm('¿Está seguro de la eliminación?')" >
+       eliminar</a>]
+   </li>
+ 
+ {% endfor %} 
+ </ul>
+
+
+
 <br />
 [<a href="{% url 'crear_estudiante' %}">agregar estudiante</a>]
 

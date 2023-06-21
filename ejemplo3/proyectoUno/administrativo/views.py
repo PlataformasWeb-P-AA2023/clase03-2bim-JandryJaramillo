@@ -46,6 +46,6 @@ def obtener_estudiante(request, id):
 def busca(request, cadena):
     """
     """
-    estudiantes = Estudiante.objects.filter(nombre=cadena).all()
+    estudiantes = Estudiante.objects.filter(nombre__contains=cadena).all()
     informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
     return render(request, 'busca.html', informacion_template)

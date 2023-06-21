@@ -21,10 +21,11 @@ def index(request):
     # se lo almacena en una variable llamada
     # estudiantes
     estudiantes = Estudiante.objects.all()
+    telefonos = NumeroTelefonico.objects.all()
     # en la variable tipo diccionario llamada informacion_template
     # se agregará la información que estará disponible
     # en el template
-    informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes)}
+    informacion_template = {'estudiantes': estudiantes, 'numero_estudiantes': len(estudiantes), 'telefonos': telefonos}
     return render(request, 'index.html', informacion_template)
 
 
@@ -43,6 +44,13 @@ def obtener_estudiante(request, id):
     # en el template
     informacion_template = {'estudiante': estudiante}
     return render(request, 'obtener_estudiante.html', informacion_template)
+
+def obtener_telefonos(request, id):
+    
+    telefonos = NumeroTelefonico.objects.get(pk=id)
+    
+    informacion_template = {'telefonos': telefonos}
+    return render(request, 'obtener_telefonos.html', informacion_template)
 
 
 def crear_estudiante(request):
@@ -87,4 +95,11 @@ def eliminar_estudiante(request, id):
     """
     estudiante = Estudiante.objects.get(pk=id)
     estudiante.delete()
+    return redirect(index)
+
+def eliminar_telefono(request, id):
+    """
+    """
+    telefonos = NumeroTelefonico.objects.get(pk=id)
+    telefonos.delete()
     return redirect(index)
